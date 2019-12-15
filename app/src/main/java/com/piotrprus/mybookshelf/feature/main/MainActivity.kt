@@ -1,13 +1,16 @@
 package com.piotrprus.mybookshelf.feature.main
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import com.piotrprus.mybookshelf.R
+import com.piotrprus.mybookshelf.base.BaseVMActivity
+import com.piotrprus.mybookshelf.base.LayoutResId
+import com.piotrprus.mybookshelf.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+@LayoutResId(R.layout.activity_main)
+class MainActivity
+    : BaseVMActivity<MainSharedViewModel, ActivityMainBinding>(MainSharedViewModel::class) {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    override fun start() {
+        super.start()
+        binding.viewModel = viewModel
     }
 }

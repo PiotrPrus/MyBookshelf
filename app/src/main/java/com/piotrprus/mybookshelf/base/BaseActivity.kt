@@ -21,7 +21,6 @@ abstract class BaseActivity<VDB : ViewDataBinding> : AppCompatActivity() {
             .let {
                 binding = DataBindingUtil.setContentView(this, it.resId)
                 binding.setLifecycleOwner(this)
-//                    binding.setLifecycleOwner { this.lifecycle }
             }
         start()
     }
