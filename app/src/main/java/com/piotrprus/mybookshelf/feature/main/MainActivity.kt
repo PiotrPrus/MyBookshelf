@@ -1,5 +1,7 @@
 package com.piotrprus.mybookshelf.feature.main
 
+import androidx.navigation.findNavController
+import com.google.android.material.bottomappbar.BottomAppBar
 import com.piotrprus.mybookshelf.R
 import com.piotrprus.mybookshelf.base.BaseVMActivity
 import com.piotrprus.mybookshelf.base.LayoutResId
@@ -12,5 +14,26 @@ class MainActivity
     override fun start() {
         super.start()
         binding.viewModel = viewModel
+        setupNavigation()
+    }
+
+    private fun setupNavigation() {
+        val navController = findNavController(R.id.fragmentHost)
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.bookListFragment -> positionFabListView()
+                R.id.bookDetailFragment -> positionFabDetailView()
+            }
+        }
+    }
+
+    private fun positionFabDetailView() {
+        binding.mainBottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
+        binding.mainFAB.setImageResource(R.drawable.ic_edit_24px)
+    }
+
+    private fun positionFabListView() {
+        binding.mainBottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
+        binding.mainFAB.setImageResource(R.drawable.ic_add_24px)
     }
 }
