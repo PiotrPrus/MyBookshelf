@@ -2,6 +2,7 @@ package com.piotrprus.mybookshelf
 
 import android.app.Application
 import com.piotrprus.mybookshelf.common.di.databaseModule
+import com.piotrprus.mybookshelf.common.di.repositoryModule
 import com.piotrprus.mybookshelf.common.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -16,7 +17,7 @@ class MyBookshelfApplication : Application() {
         startKoin {
             androidLogger()
             androidContext(this@MyBookshelfApplication)
-            modules(listOf(viewModelModule, databaseModule))
+            modules(listOf(viewModelModule, databaseModule, repositoryModule))
         }
 
         if (BuildConfig.DEBUG) {

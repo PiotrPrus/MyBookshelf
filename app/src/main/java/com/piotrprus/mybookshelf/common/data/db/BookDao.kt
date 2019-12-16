@@ -10,5 +10,5 @@ interface BookDao: BaseDao<Book> {
     @Query("DELETE FROM book")
     suspend fun deleteAll()
     @Query("SELECT * FROM book")
-    suspend fun fetchAll(): List<Book>
+    suspend fun getAll(): List<Book>
 }

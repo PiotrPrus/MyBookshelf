@@ -26,7 +26,8 @@ class TestBookDao : KoinTest {
     fun before() {
         stopKoin()
         startKoin {
-            modules(testModules) }
+            modules(testModules)
+        }
     }
 
     @After
@@ -37,24 +38,24 @@ class TestBookDao : KoinTest {
 
     @Test
     fun createAndGetBookTest() {
-        val book = Book(1234567890123, "Potop", "Henryk Sienkiewicz", 500, 4)
+        val book = Book("1234567890123", "Potop", "Henryk Sienkiewicz", 500, 4)
 
         runBlocking {
             dao.insert(book)
-            val bookFromDb = dao.fetchAll()
+            val bookFromDb = dao.getAll()
             Assert.assertEquals(listOf(book), bookFromDb)
         }
     }
 
     @Test
     fun createAndUpdateBookTest() {
-        val book = Book(1234567890123, "Potop", "Henryk Sienkiewicz", 500, 4)
+        val book = Book("1234567890123", "Potop", "Henryk Sienkiewicz", 500, 4)
 
         runBlocking {
             dao.insert(book)
             val updatedBook = book.copy(pages = 100)
             dao.update(updatedBook)
-            val bookFromDb = dao.fetchAll()
+            val bookFromDb = dao.getAll()
             Timber.d("originalBook: $book, book from DB: $bookFromDb")
             Assert.assertNotEquals(listOf(book), bookFromDb)
         }
