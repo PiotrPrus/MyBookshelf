@@ -23,5 +23,19 @@
             app:defaultNavHost="true"
             app:navGraph="@navigation/nav_graph" />
 
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/mainBottomAppBar"
+            android:layout_width="match_parent"
+            android:layout_gravity="bottom"
+            style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/mainFAB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_add_24px"
+            app:layout_anchor="@id/mainBottomAppBar"/>
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
