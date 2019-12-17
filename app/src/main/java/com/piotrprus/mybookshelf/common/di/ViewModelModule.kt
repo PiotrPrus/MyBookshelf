@@ -8,6 +8,6 @@ import org.koin.dsl.module
 
 val viewModelModule = module {
     viewModel { MainSharedViewModel() }
-    viewModel { BookListViewModel() }
+    viewModel { BookListViewModel(get()) }
     viewModel { BookDetailViewModel(get()) }
 }
