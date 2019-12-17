@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -11,6 +13,106 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/detailBookTitleLayout"
+            style="@style/ColorOutlinedTextInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/general_medium_margin"
+            android:layout_marginTop="@dimen/general_medium_margin"
+            android:layout_marginEnd="@dimen/general_medium_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/detailBookTitleET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/book_title_hint"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/detailBookAuthorLayout"
+            style="@style/ColorOutlinedTextInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/general_medium_margin"
+            android:layout_marginTop="@dimen/general_medium_margin"
+            android:layout_marginEnd="@dimen/general_medium_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailBookTitleLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/detailBookAuthorET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/book_author_hint"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/detailBookISBNLayout"
+            style="@style/ColorOutlinedTextInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/general_medium_margin"
+            android:layout_marginTop="@dimen/general_medium_margin"
+            android:layout_marginEnd="@dimen/general_medium_margin"
+            app:counterEnabled="true"
+            app:counterMaxLength="13"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailBookAuthorLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/detailBookISBNET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/isbn_number_hint"
+                android:inputType="number"
+                android:maxLength="13"
+                tools:text="1234567890" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/detailBookPagesLayout"
+            style="@style/ColorOutlinedTextInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/general_medium_margin"
+            android:layout_marginTop="@dimen/general_medium_margin"
+            android:layout_marginEnd="@dimen/general_medium_margin"
+            app:counterEnabled="true"
+            app:counterMaxLength="4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailBookISBNLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/detailBookPagesET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/number_of_pages_hint"
+                android:inputType="number"
+                android:maxLength="4"
+                tools:text="9999" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <RatingBar
+            android:id="@+id/detailBookRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:numStars="5"
+            android:stepSize="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailBookPagesLayout"
+            tools:rating="1" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

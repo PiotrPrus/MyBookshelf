@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">My bookshelf</string>
+    <string name="book_title_hint">Book title</string>
+    <string name="book_author_hint">Book author(s)</string>
+    <string name="isbn_number_hint">ISBN number</string>
+    <string name="number_of_pages_hint">Number of pages</string>
 </resources>
