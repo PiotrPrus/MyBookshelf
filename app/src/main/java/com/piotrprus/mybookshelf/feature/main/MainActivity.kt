@@ -29,7 +29,7 @@ class MainActivity
 
     private fun positionFabDetailView() {
         binding.mainBottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
-        binding.mainFAB.setImageResource(R.drawable.ic_edit_24px)
+        binding.mainFAB.setImageResource(R.drawable.ic_check_24px)
     }
 
     private fun positionFabListView() {
