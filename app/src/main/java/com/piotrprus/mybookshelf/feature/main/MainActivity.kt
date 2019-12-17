@@ -1,10 +1,13 @@
 package com.piotrprus.mybookshelf.feature.main
 
+import android.view.Menu
+import android.view.MenuItem
 import androidx.navigation.findNavController
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.piotrprus.mybookshelf.R
 import com.piotrprus.mybookshelf.base.BaseVMActivity
 import com.piotrprus.mybookshelf.base.LayoutResId
+import com.piotrprus.mybookshelf.common.utils.event.emit
 import com.piotrprus.mybookshelf.databinding.ActivityMainBinding
 
 @LayoutResId(R.layout.activity_main)
@@ -15,6 +18,20 @@ class MainActivity
         super.start()
         binding.viewModel = viewModel
         setupNavigation()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.book_detail_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.deleteBook -> viewModel.deleteBookEvent.emit()
+            R.id.clearForm -> viewModel.clearFormEvent.emit()
+        }
+        return true
     }
 
     private fun setupNavigation() {

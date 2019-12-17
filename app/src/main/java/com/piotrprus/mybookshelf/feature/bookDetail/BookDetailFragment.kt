@@ -18,7 +18,9 @@ class BookDetailFragment
     : BaseVMFragment<BookDetailViewModel, FragmentBookDetailBinding>(BookDetailViewModel::class) {
 
     private val mainSharedViewModel: MainSharedViewModel by sharedViewModel()
-    private val bookArgument: Book? by lazy { BookDetailFragmentArgs.fromBundle(requireArguments()).book }
+    private val bookArgument: Book? by lazy {
+        BookDetailFragmentArgs.fromBundle(requireArguments()).book
+    }
 
 
     override fun start() {
@@ -31,8 +33,12 @@ class BookDetailFragment
             showErrorSnackbarEvent.observeEvent { msg -> showSnackbar(msg) }
             bookMediatorLD.observe { }
         }
-        mainSharedViewModel.mainFabClickEvent.observeEvent {
-            viewModel.onConfirmationClicked()
+        mainSharedViewModel.apply {
+            mainFabClickEvent.observeEvent {
+                viewModel.onConfirmationClicked()
+            }
+            deleteBookEvent.observeEvent { viewModel.deleteBook() }
+            clearFormEvent.observeEvent { viewModel.clearForm() }
         }
     }
 

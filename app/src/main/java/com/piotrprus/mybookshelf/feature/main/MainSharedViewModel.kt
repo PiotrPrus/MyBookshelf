@@ -7,6 +7,8 @@ import com.piotrprus.mybookshelf.common.utils.event.emit
 class MainSharedViewModel: ViewModel() {
 
     val mainFabClickEvent = EventEmitter()
+    val deleteBookEvent = EventEmitter()
+    val clearFormEvent = EventEmitter()
 
     fun onMainFabClicked() {
         mainFabClickEvent.emit()

@@ -67,4 +67,25 @@ class BookDetailViewModel(private val bookRepository: BookRepository) : ViewMode
         bookPages.value = book.pages.toString()
         bookRating.value = book.rating.toFloat()
     }
+
+    fun deleteBook() {
+        viewModelScope.launch {
+            try {
+                bookMediatorLD.value?.let {
+                    bookRepository.removeBook(it)
+                    navigateToBookListEvent.emit()
+                }
+            } catch (e: Exception) {
+                showErrorSnackbarEvent.emit(e.localizedMessage ?: "Failed to remove the book")
+            }
+        }
+    }
+
+    fun clearForm() {
+        bookTitle.value = ""
+        bookAuthor.value = ""
+        bookISBN.value = ""
+        bookPages.value = "0"
+        bookRating.value = 0F
+    }
 }
