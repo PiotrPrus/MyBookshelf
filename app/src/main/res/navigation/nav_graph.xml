@@ -22,6 +22,8 @@
             android:defaultValue="@null" />
         <action
             android:id="@+id/action_bookDetailFragment_to_bookListFragment"
-            app:destination="@id/bookListFragment" />
+            app:destination="@id/bookListFragment"
+            app:popUpTo="@+id/bookListFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

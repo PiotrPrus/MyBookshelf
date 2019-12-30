@@ -1,9 +1,8 @@
 package com.piotrprus.mybookshelf.feature.bookDetail
 
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.piotrprus.mybookshelf.R
 import com.piotrprus.mybookshelf.base.BaseVMFragment
@@ -28,7 +27,7 @@ class BookDetailFragment
         bookArgument?.let { viewModel.setBook(it) }
         viewModel.apply {
             navigateToBookListEvent.observeEvent {
-                findNavController().navigate(R.id.bookListFragment)
+                findNavController().navigate(R.id.action_bookDetailFragment_to_bookListFragment)
             }
             showErrorSnackbarEvent.observeEvent { msg -> showSnackbar(msg) }
             bookMediatorLD.observe { }
