@@ -17,6 +17,7 @@ class MainActivity
     override fun start() {
         super.start()
         binding.viewModel = viewModel
+        setSupportActionBar(binding.mainBottomAppBar)
         setupNavigation()
     }
 
