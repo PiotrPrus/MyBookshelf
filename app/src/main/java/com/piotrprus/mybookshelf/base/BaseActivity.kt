@@ -17,8 +17,9 @@ abstract class BaseActivity<VDB : ViewDataBinding> : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         (this::class.annotations
-            .find { it is LayoutResId } as? LayoutResId)!!
-            .let {
+            .filterIsInstance(LayoutResId::class.java)
+            .firstOrNull())
+            ?.let {
                 binding = DataBindingUtil.setContentView(this, it.resId)
                 binding.setLifecycleOwner(this)
             }

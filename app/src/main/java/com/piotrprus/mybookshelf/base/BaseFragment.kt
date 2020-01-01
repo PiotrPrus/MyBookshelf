@@ -23,8 +23,9 @@ abstract class BaseFragment<VDB : ViewDataBinding> : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         (this::class.annotations
-            .find { it is LayoutResId } as? LayoutResId)!!
-            .let {
+            .filterIsInstance(LayoutResId::class.java)
+            .firstOrNull())
+            ?.let {
                 binding = DataBindingUtil.inflate(inflater, it.resId, container, false)
             }
         return binding.root
